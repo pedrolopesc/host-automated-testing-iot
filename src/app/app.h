@@ -1,5 +1,7 @@
+#pragma once
+
 #include "filter/filter.h"
-#include "hal/ir.h"
+#include "driver/ir.h"
 
 void setup_app();
 void loop_app();

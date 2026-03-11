@@ -1,6 +1,6 @@
-#include "hal/ir.h"
+#include "ir.h"
+#include "Adafruit_VL53L0X.h"
 
-#ifdef ARDUINO
 
 Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 
@@ -23,5 +23,3 @@ uint16_t readIR() {
     }
     return UINT16_MAX;
 }
-
-#endif

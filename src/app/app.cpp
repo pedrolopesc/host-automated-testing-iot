@@ -1,24 +1,19 @@
 
-#include "app/app.h"
+#include "app.h"
+#include "hal/log.h"
 
 void setup_app() {
-    Serial.begin(115200);
 
-    while (!Serial) {
-        delay(1);
-    }
+    log_init();
 
     if (!setupIR()) {
-        Serial.println("IR Setup failed");
+        log_info("IR Setup failed");
         while(1);
     };
 }
 
 
 void loop_app() {
-
-    Serial.print("Reading a measurement... ");
     uint16_t measure = readIR();
-    Serial.println(measure);
-    delay(100);
+    log_info("Measure: %d", measure);
 }

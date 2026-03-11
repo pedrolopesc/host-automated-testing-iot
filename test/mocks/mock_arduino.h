@@ -4,16 +4,6 @@
 
 #include <stdio.h>
 
-    #ifndef uint8_t
-    typedef unsigned char uint8_t;
-    #endif
-    #ifndef uint16_t
-    typedef unsigned short uint16_t;
-    #endif
-    #ifndef uint32_t
-    typedef unsigned int uint32_t;
-    #endif
-
 inline void delay(uint32_t ms) {};
 
 class MockSerial {
