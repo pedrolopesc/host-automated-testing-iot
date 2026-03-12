@@ -1,6 +1,8 @@
 
 #include "app/app.h"
 
+#ifndef PIO_UNIT_TESTING
+
 extern "C" int main() {
     setup_app();
 
@@ -9,3 +11,5 @@ extern "C" int main() {
     }
     return 0;
 }
+
+#endif
