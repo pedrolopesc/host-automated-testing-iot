@@ -6,7 +6,7 @@ void setup_app() {
 
     log_init();
 
-    if (!setupIR()) {
+    if (!setup_ir()) {
         log_info("IR Setup failed");
         while(1);
     };
@@ -14,6 +14,7 @@ void setup_app() {
 
 
 void loop_app() {
-    uint16_t measure = readIR();
-    log_info("Measure: %d", measure);
+    uint16_t measure = read_ir();
+    int half_measure = half_value(measure);
+    log_info("Measure: %d | %d", measure, half_measure);
 }

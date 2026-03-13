@@ -4,7 +4,7 @@
 
 Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 
-bool setupIR() {
+bool setup_ir() {
     static int trys = 3;
     for (int i = 0; i < trys; i++) {
         if (lox.begin()) {
@@ -15,7 +15,7 @@ bool setupIR() {
     return false;
 }
 
-uint16_t readIR() {
+uint16_t read_ir() {
     VL53L0X_RangingMeasurementData_t measure;
     lox.rangingTest(&measure, false);
     if (measure.RangeStatus != 4) {

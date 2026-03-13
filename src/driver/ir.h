@@ -2,5 +2,5 @@
 
 #include <cstdint>
 
-bool setupIR();
-uint16_t readIR();
+bool setup_ir();
+uint16_t read_ir();
