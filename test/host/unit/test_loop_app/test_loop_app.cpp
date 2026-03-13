@@ -4,15 +4,18 @@
 #include "host/mocks/mock_ir.h"
 
 
-void setUp(void) {
-    set_mock_read_ir_output(10);
-}
+void setUp(void) {}
 
 void tearDown(void) {}
 
 void test_loop_app(void) {
+    uint16_t read_value = 10;
+    const char* expected = "Measure: 10 | 5";
+    set_mock_read_ir_output(read_value);
+
     loop_app();
-    TEST_ASSERT_EQUAL_STRING("Measure: 10 | 5", get_last_log());
+
+    TEST_ASSERT_EQUAL_STRING(expected, get_last_log());
 }
 
 int main(void) {
