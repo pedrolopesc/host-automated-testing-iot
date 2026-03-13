@@ -8,10 +8,3 @@ The goal is to show how firmware logic can be tested **without running on the mi
 
 The project uses a layered architecture where **hardware-dependent code can be replaced with mocks**, allowing the firmware logic to run on a standard host machine.
 
----
-
-# Why Host-Based Testing?
-
-Traditional embedded development requires flashing the firmware to a microcontroller for every test cycle.
-
-Typical workflow:
