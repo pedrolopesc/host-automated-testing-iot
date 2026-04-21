@@ -1,17 +1,19 @@
-# Estado: Entrega
+# Estado 08: Entrega
 
 ## Objetivo
-Consolidar o resultado final com documentação e evidências.
+Consolidar resultado final da atualização documental.
 
 ## Entradas
-- Implementação validada
+- Documentação validada.
 
 ## Saídas
-- Entregável final
-- Documentação atualizada
+- Entrega da atualização de arquitetura e governança.
 
 ## Critério de conclusão
-- Mudanças prontas para uso e manutenção.
+- Artefatos prontos para revisão e manutenção futura.
 
-## Comunicação e periféricos
-- Registrar limitações conhecidas de interfaces/periféricos, se existirem.
+## Registro da solicitação atual (2026-04-21)
+- Entrega inclui atualização completa de documentos necessários conforme `AGENTS.md`:
+  - `architecture/DIAGRAM.md`;
+  - `architecture/TECHNICAL_BASELINE.md`;
+  - `governance/01..08`.

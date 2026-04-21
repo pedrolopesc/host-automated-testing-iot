@@ -1,11 +1,11 @@
-# DIAGRAM.md — Fluxo de Engenharia + Arquitetura Lógica
+# DIAGRAM.md — Fluxo oficial e visão arquitetural do projeto
 
-Este documento foi atualizado para refletir o estado **real** do repositório
-(implementação já existente antes da adoção do agente), mantendo o fluxo de
-estados exigido e adicionando a visão técnica de execução em **host** e em
-**hardware alvo**.
+Este diagrama consolida:
 
-## 1) Fluxo de estados (governança de execução)
+1. **Fluxo oficial de execução** exigido pelo processo (estados 01..08 em `governance/`).
+2. **Visão técnica atual** do firmware para host-based testing e hardware alvo.
+
+## 1) Fluxo oficial de execução (governança)
 
 ```mermaid
 stateDiagram-v2
@@ -23,16 +23,16 @@ stateDiagram-v2
     Entrega --> [*]
 ```
 
-## 2) Arquitetura lógica do firmware (estado atual)
+## 2) Arquitetura lógica atual (código existente)
 
 ```mermaid
 flowchart LR
-    subgraph App[Camada de Aplicação]
-        APP[app/app.cpp\nsetup_app + loop_app]
+    subgraph APP[Camada de Aplicação]
+        APP_MAIN[app/app.cpp\nsetup_app + loop_app]
         FILTER[app/filter/filter.cpp\nhalf_value]
     end
 
-    subgraph Driver[Camada de Driver]
+    subgraph DRV[Camada de Driver]
         IR[driver/ir.cpp\nsetup_ir + read_ir]
     end
 
@@ -40,46 +40,42 @@ flowchart LR
         LOG[hal/log.cpp\nlog_init + log_info]
     end
 
-    subgraph Host[Execução Host]
+    subgraph HOST[Execução Host]
         HMAIN[src/host/main.cpp]
-        MIR[host/mocks/mock_ir.cpp]
-        MLOG[host/mocks/mock_log.cpp]
-        TESTS[test/host/unit/*]
+        MOCK_IR[src/host/mocks/mock_ir.cpp]
+        MOCK_LOG[src/host/mocks/mock_log.cpp]
+        T_HOST[test/host/unit/*]
     end
 
-    subgraph Target[Execução Hardware]
+    subgraph TARGET[Execução Hardware]
         TMAIN[src/main.cpp]
         SENSOR[VL53L0X]
-        UART[Serial]
+        SERIAL[Serial]
     end
 
-    APP --> FILTER
-    APP --> IR
-    APP --> LOG
+    APP_MAIN --> FILTER
+    APP_MAIN --> IR
+    APP_MAIN --> LOG
 
     IR --> SENSOR
-    LOG --> UART
+    LOG --> SERIAL
 
-    HMAIN --> APP
-    TESTS --> APP
-    TESTS --> FILTER
-    TESTS -. substitui .-> MIR
-    TESTS -. substitui .-> MLOG
+    HMAIN --> APP_MAIN
+    T_HOST --> APP_MAIN
+    T_HOST --> FILTER
 
-    TMAIN --> APP
+    TMAIN --> APP_MAIN
 ```
 
-## 3) Regras arquiteturais derivadas
+## 3) Regras arquiteturais
 
-- A camada `app/` concentra regra de negócio e deve permanecer testável em host.
+- Regras de negócio ficam na camada `app/` e devem ser testáveis em host.
 - Dependências de hardware ficam isoladas em `driver/` e `hal/`.
-- Mocks em `src/host/mocks/` devem manter a mesma interface pública das
-  dependências reais para viabilizar testes determinísticos.
-- Qualquer mudança estrutural de fluxo ou camadas deve ser refletida primeiro
-  neste arquivo.
+- Mocks de host devem manter o mesmo contrato público dos módulos reais.
+- Mudanças estruturais de processo devem atualizar este documento antes dos demais.
 
-## 4) Mapeamento para artefatos técnicos
+## 4) Mapeamento obrigatório de documentos
 
-- Fluxo de estados formal: `governance/01..08-*.md`.
-- Detalhamento técnico complementar: `architecture/TECHNICAL_BASELINE.md`.
-- Pinagem e observações de GPIO: `FIRMWARE_GPIO_MAP.md`.
+- Fluxo formal de estados: `governance/01-SolicitacaoDeDesenvolvimento.md` até `governance/08-Entrega.md`.
+- Baseline técnica do código atual: `architecture/TECHNICAL_BASELINE.md`.
+- Pinagem de firmware: `FIRMWARE_GPIO_MAP.md`.

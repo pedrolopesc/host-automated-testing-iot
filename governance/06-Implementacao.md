@@ -1,19 +1,22 @@
-# Estado: Implementação
+# Estado 06: Implementacao
 
 ## Objetivo
-Implementar a solução conforme escopo aprovado e testes definidos.
+Executar as alterações documentais aprovadas.
 
 ## Entradas
-- Escopo aprovado
-- Testes iniciais
+- Escopo aprovado.
+- Planejamento de validação documental.
 
 ## Saídas
-- Código em `src/`
-- Testes em `tests/`
+- Documentação atualizada em `architecture/` e `governance/`.
 
 ## Critério de conclusão
-- Implementação concluída e aderente ao escopo.
+- Arquivos atualizados, versionados e coerentes com o fluxo 01..08.
 
-## Comunicação e periféricos
-- Garantir separação de responsabilidades (SOLID quando aplicável).
-- Em firmware, isolar acesso a periféricos por camadas para facilitar testes em host.
+## Registro da solicitação atual (2026-04-21)
+- Atualizado `architecture/DIAGRAM.md`.
+- Atualizado `architecture/TECHNICAL_BASELINE.md`.
+- Atualizados `governance/01..08` com registro formal da evolução.
+
+## Observação de estrutura do projeto
+- O repositório atual usa `test/` (singular) para testes automatizados.

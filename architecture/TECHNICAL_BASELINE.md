@@ -2,48 +2,40 @@
 
 ## Objetivo
 
-Registrar a baseline técnica da arquitetura atual para orientar futuras
-mudanças sem conflitar com o fluxo de governança.
+Documentar a arquitetura técnica atual para que evolução de código e documentação
+siga um baseline comum entre host e hardware alvo.
 
-## Visão de módulos
+## Estrutura técnica atual
 
-- `src/app/`
-  - Orquestra o ciclo da aplicação (`setup_app`, `loop_app`).
-  - Aplica regras de negócio (`half_value`).
-- `src/driver/`
-  - Integração com sensor IR (VL53L0X).
-- `src/hal/`
-  - Inicialização e saída de logs.
-- `src/host/`
-  - Entrypoint para execução nativa e mocks para testes host-based.
-- `test/host/unit/`
-  - Testes unitários de comportamento da aplicação e regras puras.
+- `src/app/`: orquestração de fluxo da aplicação e regra de negócio.
+- `src/driver/`: integração com periférico/sensor.
+- `src/hal/`: abstrações de logging e infraestrutura de baixo nível.
+- `src/host/`: execução nativa e mocks para substituir hardware.
+- `test/host/unit/`: testes unitários em host.
 
 ## Perfis de execução
 
 ### Hardware alvo
 
-- Entrada principal: `src/main.cpp`.
-- Usa `driver/ir.cpp` real com dependência de biblioteca de sensor.
-- Usa `hal/log.cpp` para observabilidade em runtime.
+- Entrada: `src/main.cpp`.
+- Usa implementações reais de `driver/` e `hal/`.
+- Objetivo: validar comportamento em microcontrolador e periféricos.
 
 ### Host (native)
 
-- Entrada principal: `src/host/main.cpp`.
-- Substitui dependências de hardware com mocks em `src/host/mocks/`.
-- Executa suíte unitária em `test/host/unit/`.
+- Entrada: `src/host/main.cpp`.
+- Substitui hardware por mocks (`src/host/mocks/`).
+- Objetivo: feedback rápido, determinístico e automatizado.
 
 ## Contratos de fronteira
 
-Para preservar testabilidade e baixo acoplamento:
+- `driver/ir.h`: contrato de inicialização e leitura do sensor.
+- `hal/log.h`: contrato de inicialização e saída de logs.
+- `app/` consome contratos, não detalhes concretos de dispositivo.
 
-- `driver/ir.h` define contrato de leitura e setup do sensor.
-- `hal/log.h` define contrato de logging.
-- `app/` depende dos contratos e não de detalhes concretos de hardware.
+## Regras de evolução
 
-## Critérios de evolução arquitetural
-
-1. Novas integrações de hardware devem entrar por `driver/` ou `hal/`.
-2. Regras de negócio devem ficar em `app/` (ou submódulos de `app/`).
-3. Toda funcionalidade nova deve ter caminho testável em host.
-4. Alteração de pinagem deve atualizar `FIRMWARE_GPIO_MAP.md`.
+1. Novo acesso a periférico deve entrar por `driver/` ou `hal/`.
+2. Regra de negócio deve permanecer em `app/`.
+3. Toda funcionalidade nova deve ter estratégia de teste em host.
+4. Mudanças de pinagem exigem atualização de `FIRMWARE_GPIO_MAP.md`.

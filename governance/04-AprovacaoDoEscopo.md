@@ -1,16 +1,17 @@
-# Estado: AprovaçãoDoEscopo
+# Estado 04: AprovacaoDoEscopo
 
 ## Objetivo
-Obter aprovação formal do escopo proposto antes de codificar.
+Registrar aprovação explícita para execução do escopo definido no estado 03.
 
 ## Entradas
-- Documento de escopo
+- Documento de escopo (`03-PropostaDeEscopo.md`).
 
 ## Saídas
-- Escopo aprovado ou feedback para ajuste
+- Escopo aprovado para execução.
 
 ## Critério de conclusão
-- Escopo aprovado explicitamente.
+- Aprovação explícita do solicitante registrada.
 
-## Comunicação e periféricos
-- Confirmar se dependências de comunicação/periféricos estão cobertas pelo escopo.
+## Registro da solicitação atual (2026-04-21)
+- Aprovação considerada explícita pela instrução do solicitante:
+  - "atualize todos os documentos necessários conforme AGENTS.md".

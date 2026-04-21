@@ -1,18 +1,17 @@
-# Estado: Validação
+# Estado 07: Validacao
 
 ## Objetivo
-Executar e registrar a validação da implementação.
+Registrar resultado das validações planejadas.
 
 ## Entradas
-- Código implementado
-- Suíte de testes
+- Artefatos atualizados.
 
 ## Saídas
-- Resultado dos testes
-- Evidências de conformidade com o escopo
+- Evidências de validação e limitações do ambiente.
 
 ## Critério de conclusão
-- Testes relevantes aprovados e sem regressão conhecida.
+- Evidências registradas e sem inconsistências críticas.
 
-## Comunicação e periféricos
-- Em firmware, validar comportamento tanto em host quanto no microcontrolador alvo.
+## Registro da solicitação atual (2026-04-21)
+- `git diff --check`: sem problemas de whitespace/patch.
+- `pio test -e host`: não executado com sucesso por indisponibilidade do comando `pio` no ambiente.
