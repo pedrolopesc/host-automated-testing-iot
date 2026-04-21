@@ -1,17 +1,20 @@
-# Estado: RevisãoDoDiagrama
+# Estado 02: RevisaoDoDiagrama
 
 ## Objetivo
-Verificar se o `architecture/DIAGRAM.md` representa corretamente o fluxo necessário para a demanda atual.
+Verificar se `architecture/DIAGRAM.md` representa corretamente fluxo e arquitetura do projeto.
 
 ## Entradas
-- Solicitação de desenvolvimento
-- `architecture/DIAGRAM.md` existente (quando houver)
+- Solicitação registrada no estado 01.
+- `architecture/DIAGRAM.md` existente.
 
 ## Saídas
-- Proposta de ajuste do diagrama ou confirmação de aderência
+- Confirmação de aderência ou proposta de ajuste do diagrama.
 
 ## Critério de conclusão
-- Diagrama atualizado (ou validado) para refletir o fluxo da demanda.
+- Diagrama atualizado/validado para refletir o processo e a arquitetura atual.
 
-## Comunicação e periféricos
-- Em projetos de firmware, validar se o fluxo contempla configuração e validação de periféricos.
+## Registro da solicitação atual (2026-04-21)
+- Resultado: diagrama revisado para incluir:
+  - fluxo obrigatório 01..08;
+  - arquitetura lógica host + hardware alvo;
+  - mapeamento para os documentos obrigatórios.

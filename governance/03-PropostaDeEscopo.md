@@ -1,19 +1,24 @@
-# Estado: PropostaDeEscopo
+# Estado 03: PropostaDeEscopo
 
 ## Objetivo
-Definir claramente o que será alterado antes de implementar.
+Definir o que será alterado na documentação antes de qualquer implementação adicional.
 
 ## Entradas
-- Diagrama revisado
-- Requisitos e restrições da solicitação
+- Diagrama revisado.
+- Regras do `AGENTS.md`.
 
 ## Saídas
-- Escopo proposto (itens dentro/fora do escopo)
-- Estratégia de validação inicial
+- Escopo documental com itens dentro/fora do escopo.
 
 ## Critério de conclusão
-- Escopo pronto para revisão/aprovação.
+- Escopo claro e pronto para aprovação explícita.
 
-## Comunicação e periféricos
-- Descrever interfaces de comunicação impactadas.
-- Em firmware, listar periféricos envolvidos no escopo.
+## Registro da solicitação atual (2026-04-21)
+### Dentro do escopo
+- Atualizar `architecture/DIAGRAM.md`.
+- Atualizar/criar baseline técnica em `architecture/TECHNICAL_BASELINE.md`.
+- Atualizar os estados `governance/01..08` com registro formal da evolução.
+
+### Fora do escopo
+- Mudanças de código-fonte em `src/`.
+- Mudanças de pinagem (sem alteração em `FIRMWARE_GPIO_MAP.md` nesta solicitação).

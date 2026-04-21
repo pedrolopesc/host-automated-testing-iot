@@ -1,19 +1,18 @@
-# Estado: PlanejamentoDeTestes
+# Estado 05: PlanejamentoDeTestes
 
 ## Objetivo
-Definir os testes que validarão o escopo aprovado, começando antes da implementação.
+Definir validações da atualização documental realizada.
 
 ## Entradas
-- Escopo aprovado
+- Escopo aprovado.
 
 ## Saídas
-- Casos de teste iniciais
-- Critérios objetivos de aceite
+- Checklist de validação documental e consistência estrutural.
 
 ## Critério de conclusão
-- Pelo menos um teste inicial pronto para guiar implementação.
+- Validações mínimas executadas e registradas.
 
-## Comunicação e periféricos
-- Em firmware, separar claramente:
-  - testes em host;
-  - testes no hardware alvo.
+## Registro da solicitação atual (2026-04-21)
+- Verificar consistência textual e mapeamento entre `architecture/` e `governance/`.
+- Executar `git diff --check` para detectar problemas de formatação no patch.
+- Tentar execução de testes host com `pio test -e host` (quando ferramenta disponível).
