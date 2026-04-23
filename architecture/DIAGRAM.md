@@ -34,6 +34,7 @@ flowchart LR
 
     subgraph Driver[Camada de Driver]
         IR[driver/ir.cpp\nsetup_ir + read_ir]
+        IMU[driver/imu.cpp\nsetup_imu + imu_has_vibration_event]
     end
 
     subgraph HAL[Camada HAL]
@@ -43,27 +44,37 @@ flowchart LR
     subgraph Host[Execução Host]
         HMAIN[src/host/main.cpp]
         MIR[host/mocks/mock_ir.cpp]
+        MIMU[host/mocks/mock_imu.cpp]
         MLOG[host/mocks/mock_log.cpp]
         TESTS[tests/host/unit/*]
     end
 
     subgraph Target[Execução Hardware]
         TMAIN[src/main.cpp]
-        SENSOR[VL53L0X]
+        IRSENSOR[VL53L0X]
+        IMUSENSOR[QMC6500]
         UART[Serial]
+        I2C[Wire]
+        EXTI[GPIO Interrupt]
     end
 
     APP --> FILTER
     APP --> IR
+    APP --> IMU
     APP --> LOG
 
-    IR --> SENSOR
+    IR --> IRSENSOR
+    IMU --> IMUSENSOR
+    IR --> I2C
+    IMU --> I2C
+    IMU --> EXTI
     LOG --> UART
 
     HMAIN --> APP
     TESTS --> APP
     TESTS --> FILTER
     TESTS -. substitui .-> MIR
+    TESTS -. substitui .-> MIMU
     TESTS -. substitui .-> MLOG
 
     TMAIN --> APP
