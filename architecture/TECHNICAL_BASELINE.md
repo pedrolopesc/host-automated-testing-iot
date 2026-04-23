@@ -16,7 +16,7 @@ mudanças sem conflitar com o fluxo de governança.
   - Inicialização e saída de logs.
 - `src/host/`
   - Entrypoint para execução nativa e mocks para testes host-based.
-- `test/host/unit/`
+- `tests/host/unit/`
   - Testes unitários de comportamento da aplicação e regras puras.
 
 ## Perfis de execução
@@ -31,7 +31,7 @@ mudanças sem conflitar com o fluxo de governança.
 
 - Entrada principal: `src/host/main.cpp`.
 - Substitui dependências de hardware com mocks em `src/host/mocks/`.
-- Executa suíte unitária em `test/host/unit/`.
+- Executa suíte unitária em `tests/host/unit/`.
 
 ## Contratos de fronteira
 

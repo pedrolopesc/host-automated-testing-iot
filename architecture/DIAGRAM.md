@@ -44,7 +44,7 @@ flowchart LR
         HMAIN[src/host/main.cpp]
         MIR[host/mocks/mock_ir.cpp]
         MLOG[host/mocks/mock_log.cpp]
-        TESTS[test/host/unit/*]
+        TESTS[tests/host/unit/*]
     end
 
     subgraph Target[Execução Hardware]
